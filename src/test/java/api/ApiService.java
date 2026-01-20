@@ -5,10 +5,10 @@ import utils.ConfigReader;
 
 public class ApiService
 {
-    public static Response getCarList()
+    public static Response getCarList(String endpoint)
     {
         String baseUrl = ConfigReader.getProperty("api.baseUrl");
-        String endpoint = ConfigReader.getProperty("api.get");
+        //String endpoint = ConfigReader.getProperty("api.get");
         return ApiClient.get(baseUrl+endpoint);
     }
 }

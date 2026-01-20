@@ -1,5 +1,7 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import ui.pages.CarShowroomPage;
@@ -10,13 +12,27 @@ import utils.DriverFactory;
 public class Base
 {
 
-    DriverFactory driverFactory = new DriverFactory();
+    public static WebDriver driver;
+    public static CarShowroomPage carShowroomPage;
+    public static ErrorPage errorPage;
 
-    final WebDriver driver = driverFactory.browserchoice(ConfigReader.getProperty("web.url"),ConfigReader.getProperty("web.browser"));
+    @Before("@ui")
+    public void setUpUI() {
+        DriverFactory driverFactory = new DriverFactory();
 
-    CarShowroomPage carShowroomPage = PageFactory.initElements(driver, CarShowroomPage.class);
+        driver = driverFactory.browserchoice(ConfigReader.getProperty("web.url"), ConfigReader.getProperty("web.browser"));
 
-    ErrorPage errorPage = PageFactory.initElements(driver, ErrorPage.class);
+        carShowroomPage = PageFactory.initElements(driver, CarShowroomPage.class);
 
+        errorPage = PageFactory.initElements(driver, ErrorPage.class);
+    }
+
+    @After("@ui")
+    public void tearDownUI() {
+        if (driver != null) {
+            driver.quit();
+        }
+
+    }
 
 }

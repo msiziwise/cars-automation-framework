@@ -9,20 +9,11 @@ import static org.hamcrest.Matchers.*;
 
 public class CarsShowroomAPISteps
 {
-
     Response response;
-    @Test
-    public void getCarList()
-    {
-        ApiService.getCarList().
-                then().
-                assertThat().
-                statusCode(200).
-                body("name",containsStringIgnoringCase("Renault Clio"));
-    }
+
     @When("I send a GET request to {string}")
     public void i_send_a_get_request_to(String endpoint) {
-         response=ApiService.getCarList();
+        response=ApiService.getCarList(endpoint);
     }
 
     @Then("the response status code should be {int}")
@@ -32,7 +23,7 @@ public class CarsShowroomAPISteps
 
     @Then("the response should contain {string}")
     public void the_response_status_should_be(String field) {
-        response.then().assertThat().body("name",containsStringIgnoringCase(field));
+        response.then().assertThat().body("cars[2].name",containsStringIgnoringCase(field));
     }
 
     @Then("each car contains, name, price, and image")
@@ -50,5 +41,6 @@ public class CarsShowroomAPISteps
         response.then()
                 .body("cars.size()", greaterThan(0));
     }
+
 
 }

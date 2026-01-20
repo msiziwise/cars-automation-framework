@@ -1,3 +1,4 @@
+@api
 Feature: Retrieve available cars
 
   Scenario: Successfully retrieve cars list

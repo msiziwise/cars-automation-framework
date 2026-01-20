@@ -11,9 +11,11 @@ import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
 import utils.DriverFactory;
 
+import static steps.Base.carShowroomPage;
+import static steps.Base.errorPage;
 import static utils.DriverFactory.driver;
 
-public class CarsShowroomSteps extends Base
+public class CarsShowroomSteps
 {
 
     @Given("I navigate to the Cars Showroom page")
