@@ -11,8 +11,7 @@ import static utils.Hooks.carShowroomPage;
 import static utils.Hooks.errorPage;
 import static utils.DriverFactory.driver;
 
-public class CarsShowroomSteps
-{
+public class CarsShowroomSteps {
 
     @Given("I navigate to the Cars Showroom page")
     public void navigateToCarsShowroomPage() {
@@ -55,7 +54,7 @@ public class CarsShowroomSteps
 
     @Then("each car card should have a View Details button")
     public void verifyViewDetailsButtonOnCarCard() {
-         carShowroomPage.verifyViewDetailLink();
+        carShowroomPage.verifyViewDetailLink();
     }
 
     @When("I click View Details on the first car")
@@ -175,6 +174,7 @@ public class CarsShowroomSteps
     @And("the page should remain visible and usable")
     public void thePageShouldRemainVisibleAndUsable() {
     }
+
     @AfterStep
     public void tearDown(Scenario scenario) {
         // This method will be executed after each scenario
