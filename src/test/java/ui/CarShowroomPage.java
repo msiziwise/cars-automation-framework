@@ -1,6 +1,7 @@
 package ui;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,10 +43,10 @@ public class CarShowroomPage {
     @FindBy(xpath = "//*[@id='car-list']/div[1]")
     WebElement xpathFirstCarCard;
 
-    @FindBy(xpath = "//*[@id='car-list']/div[1]//a")
+    @FindBy(xpath = "//*[@id='car-list']//a")
     WebElement xpathFirstCarName;
 
-    @FindBy(xpath = "//*[@id='car-list']/div[1]//p[.//text()]")
+    @FindBy(xpath = "//*[@id='car-list']/div[1]//p[normalize-space()]")
     WebElement xpathFirstCarPrice;
 
     @FindBy(xpath = "//*[@id='car-list']//span[position()=2]")
@@ -71,8 +72,9 @@ public class CarShowroomPage {
 
     public void clickCarCard() {
 
+
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", xpathFirstCarName);
-        //new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.elementToBeClickable(xpathFirstCarName));
+        //new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='car-list']//a")));
         //xpathFirstCarName.click();
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", xpathFirstCarName);
 
@@ -125,6 +127,7 @@ public class CarShowroomPage {
     }
     public String getprice()
     {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(xpathFirstCarPrice));
         return xpathFirstCarPrice.getText();
     }
   }
