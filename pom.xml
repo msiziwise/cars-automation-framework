@@ -50,46 +50,36 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <profiles>
+    <build>
+        <plugins>
+            <!-- Compiler plugin to compile Java code -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
 
-        <!-- API Tests Profile -->
-        <profile>
-            <id>api-tests</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.1.2</version>
-                        <configuration>
-                            <includes>
-                                <include>**/ApiTestRunner.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+            <!-- Surefire plugin to run tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <!-- Include your JUnit runner class explicitly -->
+                    <includes>
+                        <include>**/ApiTestRunner.java</include>
+                        <include>**/UiTestRunner.java</include>
+                    </includes>
 
-        <!-- UI Tests Profile -->
-        <profile>
-            <id>ui-tests</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.1.2</version>
-                        <configuration>
-                            <includes>
-                                <include>**/UiTestRunner.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+                    <!-- Optional: Fail build if no tests run -->
+                    <failIfNoTests>true</failIfNoTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-    </profiles>
 
 </project>
