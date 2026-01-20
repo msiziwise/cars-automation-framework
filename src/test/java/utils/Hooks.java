@@ -30,11 +30,9 @@ public class Hooks
     }
 
     @After("@ui")
-    public void tearDownUI() {
-        if (driver != null) {
-            driver.quit();
-        }
-
+    public void tearDownUI()
+    {
+        driver.quit();
     }
     @AfterStep
     public void tearDown(Scenario scenario) {

@@ -5,7 +5,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class CarShowroomPage {
@@ -48,6 +51,9 @@ public class CarShowroomPage {
     @FindBy(xpath = "//*[@id='car-list']//span[position()=2]")
     WebElement xpathCarDealership;
 
+    @FindBy(xpath = "//*[@id='car-list']//h5/a/span")
+    WebElement xpathFiatPanda;
+
     @FindBy(xpath = "//*[@id='fallback-title']")
     WebElement xpathNoResultsMessage;
 
@@ -72,6 +78,15 @@ public class CarShowroomPage {
 
 
     }
+    public int DisplayedCarCount() {
+        return xpathCarCards.size();
+    }
+
+
+    public boolean isCarListDisplayed() {
+        return !xpathCarCards.isEmpty() && xpathCarCards.get(0).isDisplayed();
+    }
+
     public void switchToNewWindow()
     {
         switchToNewWindow();
@@ -90,6 +105,7 @@ public class CarShowroomPage {
          Assert.assertTrue("Car price is not visible",xpathFirstCarPrice.isDisplayed());
          Assert.assertTrue("Car make is not visible",xpathFirstCarName.isDisplayed());
      }
+
      public void verifyViewDetailLink()
      {
          Assert.assertTrue("Car details link is not visible",xpathFirstCarName.isDisplayed());
@@ -102,6 +118,14 @@ public class CarShowroomPage {
 
         Assert.assertEquals("We couldn't find results for VW Golf.",xpathNoResultsMessage.getText());
     }
-
+    public String getname()
+    {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(xpathFirstCarName));
+        return xpathFirstCarName.getText();
+    }
+    public String getprice()
+    {
+        return xpathFirstCarPrice.getText();
+    }
   }
 

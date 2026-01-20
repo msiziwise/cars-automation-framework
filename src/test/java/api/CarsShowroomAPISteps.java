@@ -8,15 +8,18 @@ import static org.hamcrest.Matchers.*;
 public class CarsShowroomAPISteps
 {
     Response response;
+    public int apiCarCount;
 
     @When("I send a GET request to {string}")
     public void i_send_a_get_request_to(String endpoint) {
         response=ApiService.getCarList(endpoint);
+
     }
 
     @Then("the response status code should be {int}")
     public void the_response_status_code_should_be(int statusCode) {
         response.then().assertThat().statusCode(statusCode);
+
     }
 
     @Then("the response should contain {string}")

@@ -23,7 +23,7 @@ public class DriverFactory {
             //chromeOptions.addArguments("--user-data-dir=/tmp/chrome-temp");
             //chromeOptions.addArguments("--remote allow-origin.=*");
 
-            chromeOptions.addArguments("--headless");
+            //chromeOptions.addArguments("--headless");
             //chromeOptions.addArguments("--no-sandbox");
             //chromeOptions.addArguments("--disable-dev-shm-usage");
 
