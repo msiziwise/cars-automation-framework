@@ -19,13 +19,8 @@ public class DriverFactory {
         {
             WebDriverManager.chromedriver().setup();
             ChromeOptions chromeOptions = new ChromeOptions();
-            //chromeOptions.addArguments("--disable-web-security");
-            //chromeOptions.addArguments("--user-data-dir=/tmp/chrome-temp");
-            //chromeOptions.addArguments("--remote allow-origin.=*");
-
             chromeOptions.addArguments("--headless");
-            //chromeOptions.addArguments("--no-sandbox");
-            //chromeOptions.addArguments("--disable-dev-shm-usage");
+
 
             driver = new ChromeDriver(chromeOptions);
 
