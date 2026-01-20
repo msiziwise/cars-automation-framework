@@ -60,5 +60,5 @@ jobs:
         with:
           name: cucumber-reports
           path: |
-            target/cucumber-reports/api
-            target/cucumber-reports/ui
+            target/cucumber-reports/api.html
+            target/cucumber-reports/ui.html
