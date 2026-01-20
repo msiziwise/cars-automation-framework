@@ -1,18 +1,14 @@
-package steps;
+package ui;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
-import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import utils.ConfigReader;
-import utils.DriverFactory;
+import utils.Hooks;
 
-import static steps.Base.carShowroomPage;
-import static steps.Base.errorPage;
+import static utils.Hooks.carShowroomPage;
+import static utils.Hooks.errorPage;
 import static utils.DriverFactory.driver;
 
 public class CarsShowroomSteps
@@ -21,6 +17,8 @@ public class CarsShowroomSteps
     @Given("I navigate to the Cars Showroom page")
     public void navigateToCarsShowroomPage() {
 
+        Hooks hooks = new Hooks();
+        hooks.setUpUI();
     }
     // -----------------------
     // Smoke Tests

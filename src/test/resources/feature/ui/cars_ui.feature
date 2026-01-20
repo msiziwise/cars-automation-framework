@@ -1,3 +1,4 @@
+@ui
 Feature: Cars Showroom UI
   As a user
   I want to browse cars in the showroom

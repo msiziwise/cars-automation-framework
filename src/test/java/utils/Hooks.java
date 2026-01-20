@@ -1,15 +1,17 @@
-package steps;
+package utils;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import ui.pages.CarShowroomPage;
-import ui.pages.ErrorPage;
-import utils.ConfigReader;
-import utils.DriverFactory;
+import ui.CarShowroomPage;
+import ui.ErrorPage;
 
-public class Base
+public class Hooks
 {
 
     public static WebDriver driver;
@@ -34,5 +36,16 @@ public class Base
         }
 
     }
-
+    @AfterStep
+    public void tearDown(Scenario scenario) {
+        // This method will be executed after each scenario
+        if (scenario.isFailed()) {
+            // Take a screenshot and attach it to the report
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Failure Screenshot");
+        }
+//        driver.quit();
+    }
 }
+
+

@@ -1,4 +1,4 @@
-package ui.pages;
+package ui;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;

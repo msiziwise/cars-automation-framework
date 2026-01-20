@@ -1,9 +1,7 @@
-package steps;
+package api;
 
-import api.ApiService;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
-import org.junit.Test;
 
 import static org.hamcrest.Matchers.*;
 
